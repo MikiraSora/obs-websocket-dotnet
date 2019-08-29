@@ -224,6 +224,39 @@ namespace OBSWebsocketDotNet
             SendRequest("ToggleMute", requestFields);
         }
 
+        public void SetSceneItemProperties(string itemName, SceneItemProperties properties, string sceneName = null)
+        {
+            var requestFields = new JObject();
+            requestFields.Add("item", itemName);
+
+            CheckAdd(sceneName, "scene-name");
+            CheckAdd(properties.PositionX, "position.x");
+            CheckAdd(properties.PositionY, "position.y");
+            CheckAdd(properties.Rotation, "rotation");
+            CheckAdd(properties.ScaleX, "scale.x");
+            CheckAdd(properties.ScaleY, "scale.y");
+            CheckAdd(properties.CropTop, "crop.top");
+            CheckAdd(properties.Visiable, "visible");
+            CheckAdd(properties.Locked, "locked");
+            CheckAdd(properties.PositionX, "crop.bottom");
+            CheckAdd(properties.PositionX, "crop.left");
+            CheckAdd(properties.PositionX, "crop.right");
+            CheckAdd(properties.PositionX, "visible");
+            CheckAdd(properties.PositionX, "locked");
+            CheckAdd(properties.BoundsType, "bounds.type");
+            CheckAdd(properties.BoundsAlignment, "bounds.alignment");
+            CheckAdd(properties.BoundsX, "bounds.x");
+            CheckAdd(properties.BoundsY, "bounds.y");
+
+            var result = SendRequest("SetSceneItemProperties", requestFields);
+
+            void CheckAdd(object val,string field)
+            {
+                if (val != null)
+                    requestFields.Add(field,JToken.FromObject(val));
+            }
+        }
+
         /// <summary>
         /// Set the position of the specified scene item
         /// </summary>

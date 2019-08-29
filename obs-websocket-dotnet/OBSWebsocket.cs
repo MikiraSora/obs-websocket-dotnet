@@ -29,6 +29,7 @@ using System.Text;
 using WebSocketSharp;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace OBSWebsocketDotNet
 {
@@ -328,6 +329,10 @@ namespace OBSWebsocketDotNet
 
             if ((string)result["status"] == "error")
                 throw new ErrorResponseException((string)result["error"]);
+
+#if DEBUG
+            Console.WriteLine($"({DateTime.Now.ToShortTimeString()})[OBSWS] Send : {body.ToString(Formatting.None)} || Recv : {result.ToString(Formatting.None)}");
+#endif
 
             return result;
         }

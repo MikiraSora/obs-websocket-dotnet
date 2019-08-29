@@ -214,6 +214,32 @@ namespace OBSWebsocketDotNet
         }
     }
 
+    public class SceneItemProperties
+    {
+        public string Name;
+
+        public int? PositionX;
+        public int? PositionY;
+        public int? PositionAlignment;
+        public double? Rotation;
+        public double? ScaleX;
+        public double? ScaleY;
+        public int? CropTop;
+        public int? CropRight;
+        public int? CropBottom;
+        public int? CropLeft;
+        public bool? Visiable;
+        public bool? Locked;
+        public string BoundsType;
+        public int? BoundsAlignment;
+        public double? BoundsX;
+        public double? BoundsY;
+        public int? SourceWidth;
+        public int? SourceHeight;
+        public double? Width;
+        public double? Height;
+    }
+
     /// <summary>
     /// Data required by authentication
     /// </summary>
